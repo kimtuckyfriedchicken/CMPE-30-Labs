@@ -1,0 +1,150 @@
+#include <stdio.h>
+
+float calculate_percent(float score, float max_score);
+float getAvg(float *arrayPtr, int Length);
+char getGradeLetter(float percentage);
+void print_line(char line, int times);
+int getExamScoreFromUser(int i);
+
+int main(void)
+{
+    print_line('b', 2);
+
+    float percentage; //percentage is the average
+    char grade;
+
+    int option = 0;
+    float exam_scores [100];
+    int numberOfExams = 0;
+
+    bool a=false;
+        do {
+        char name[25];
+        printf("\n");
+        printf("Select option number in menu\n");
+        printf("1. Enter user name.\n");
+        printf("2. Enter exam scores.\n");
+        printf("3. Display average exam scores.\n");
+        printf("4. Display summary.\n");
+        printf("5. Quit\n");
+        scanf("%i", &option);
+       if(option == 1)
+                    {
+                            printf("Enter your first name: \n");
+                            scanf("%s", &name[0]);
+                            printf("Please select next option in menu.\n ");
+                            option = 0;
+                    }
+
+       if(option == 2)
+         {
+           a=true;
+           printf("How many exams are there?\n");
+           scanf("%i", &numberOfExams);
+           if(numberOfExams > 100)
+           {
+               printf("Sorry, I can only calculate the average of up to one hundred exams. Please select option 2 in the menu and try again. \n");
+               option = 0;
+           }
+              for(int i=1; i<=numberOfExams; i++)
+                       {
+                          exam_scores[i-1] = getExamScoreFromUser(i);
+                       }
+                          printf("Please select next option in menu.\n ");
+                       option = 0;
+        }
+
+       if(option == 3)
+                {
+                    if(a==false )
+                    {
+                        printf("Use menu to enter exam scores first. Please select option 2.\n");
+                        option = 0;
+                    }
+                    else
+                    {
+
+                      percentage = getAvg(&exam_scores[0], numberOfExams);
+
+                      printf("Your average score is %.2f%%\n", percentage);
+                      printf("Please select next option in menu.\n ");
+                    }
+                    option = 0;
+                }
+
+                if(option == 4)
+                {
+                    if(name[0] == '\0' || a == false)
+                    {
+                        printf("Please use the menu to enter name and/or exam scores first.\n");
+                        option = 0;
+                    }
+                    else
+                    {
+                        grade = getGradeLetter(percentage);
+                        printf("Hello %s, based on your exam scores of ", name);
+                        for(int i = 0; i < numberOfExams; i++)
+                        {
+                            printf("%.2f%%, ", exam_scores[i]);
+                        }
+                        printf(". Your average is %.2f%% with letter grade: %c", percentage, grade);
+                    }
+                }
+                if(option == 5)
+                {
+                    printf("You have quit or the program has ended. Goodbye.\n");
+                }
+            } while(option != 5);
+
+
+
+    return -1;
+}
+
+
+float calculate_percent(float score, float max_score)
+{
+    float percentage = (score/max_score)*100;
+    return percentage;
+}
+float getAvg(float *arrayPtr, int Length)
+{
+    float sum = 0;
+    for(int i = 0; i < Length; i++)
+    {
+        sum = sum + arrayPtr[i];
+    }
+    return sum/(float)Length;
+}
+char getGradeLetter(float percentage)
+{
+    char grade = 'F';
+    //float average;
+    if(percentage >= 90)
+        grade = 'A';
+    else if (percentage >= 80)
+        grade = 'B';
+    else if (percentage >= 70)
+        grade = 'C';
+    else if (percentage >= 60)
+        grade = 'D';
+    else
+        grade = 'F';
+    return grade;
+}
+void print_line(char line, int times)
+{
+    for(int i = 0; i < times; i++)
+    {
+        printf("%c", line);
+    }
+
+}
+
+int getExamScoreFromUser(int numberOfTheExam)
+{
+    int examScore;
+    printf("What did you get on exam #%i?\n", numberOfTheExam);
+    scanf("%i", &examScore);
+    return examScore;
+}
