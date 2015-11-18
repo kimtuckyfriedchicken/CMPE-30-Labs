@@ -1,0 +1,96 @@
+#include <stdio.h>
+
+int main(void)
+{
+  char name[25];
+    printf("Enter your first name: \n");
+    scanf("%s", &name[0]);
+    printf("Nice to meet you %s .", name);
+
+   float exam_scores [3];
+
+    for(int i=1; i<4; i++)
+    {
+         printf("What did you get on exam #%i?\n", i);
+         scanf("%f", &exam_scores[i-1]);
+    }
+    float sum = 0;
+    for(int i = 0; i<3; i++)
+    {
+        sum = sum+(exam_scores[i]);
+    }
+    float average = sum/3;
+
+    char grade = 'F';
+
+    if(average >= 90)
+        grade = 'A';
+    else if (average >= 80)
+        grade = 'B';
+    else if (average >= 70)
+            grade = 'C';
+    else if (average >= 60)
+            grade = 'D';
+    else
+            grade = 'F';
+    printf("Hello %s, based on your exam scores of %.2f, %.2f, and %.2f, your average is %.2f with letter grade '%c'\n", name, exam_scores[0], exam_scores[1], exam_scores[2], average, grade);
+
+    printf("What is your first name?\n");
+    scanf("%s", &name);
+
+    int scores[3];
+    int max = 100;
+    int sum = 0;
+    for(int i = 1; i < 4; i++)
+    {
+        printf("What is the score of exam #%i ?\n", i);
+            scanf("%i", &scores[i]);
+    }
+
+    for(int i = 0; i < 3; i++)
+    {
+        sum = sum + scores[i];
+    }
+    float average = (float)sum/3;
+
+    char grade = 'F';
+
+        if(average >= 90)
+            grade = 'A';
+        else if (average >= 80)
+            grade = 'B';
+        else if (average >= 70)
+                grade = 'C';
+        else if (average >= 60)
+                grade = 'D';
+        else
+                grade = 'F';
+    printf("Hello %s, based on your exam scores of %i, %i, and %i, your average is %.2f with letter grade of '%c'\n", name, scores[0], scores[1], scores[2], average, grade);
+    
+    /*float max;
+    float user;
+    printf("What is the max score of your exam: \n");
+            scanf("%f", &max);
+    printf("What was your score: \n");
+            scanf("%f", &user);
+   int percentage = user/max *100;
+
+   if(user > max)
+       printf("NO");
+   else
+   {
+       char grade = 'F';
+
+               if(percentage >= 90)
+                   grade = 'A';
+               else if (percentage >= 80)
+                   grade = 'B';
+               else if (percentage >= 70)
+                       grade = 'C';
+               else if (percentage >= 60)
+                       grade = 'D';
+               else
+                       grade = 'F';
+    
+   }
+ }
