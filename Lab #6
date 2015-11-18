@@ -1,0 +1,98 @@
+#include <stdio.h> 
+
+int main(void)
+{
+int option = 0;
+    bool a=false;
+    do {
+        char name[25];
+        float exam_scores [3];
+        float sum = 0;
+
+        printf("Select option number in menu\n");
+        printf("1. Enter user name.\n");
+        printf("2. Enter exam scores.\n");
+        printf("3. Display average exam scores.\n");
+        printf("4. Display summary.\n");
+        printf("5. Quit\n");
+        scanf("%i", &option);
+
+        if(option == 1)
+            {
+                    printf("Enter your first name: \n");
+                    scanf("%s", &name[0]);
+                    printf("Please select next option in menu.\n ");
+                    option = 0;
+            }
+
+        if(option == 2)
+            {
+            a=true;
+               for(int i=1; i<4; i++)
+               {
+                    printf("What did you get on exam #%i?\n", i);
+                    scanf("%f", &exam_scores[i-1]);
+               }
+               option = 0;
+            }
+
+        if(option == 3)
+        {
+            if(a==false )
+            {
+                printf("Please use the menu to enter exam scores first. Select option 2.\n");
+                option = 0;
+            }
+            else
+            {
+            for(int i = 0; i<3; i++)
+               {
+                   sum = sum+(exam_scores[i]);
+               }
+              float average = sum/3;
+              printf("Your average score is %.2f.%%\n", average);
+              printf("Please select next option in menu.\n ");
+            }
+        }
+
+        if(option == 4)
+        {
+            if(name[0] == '\0' || a == false)
+            {
+                printf("Please use the menu to enter name and/or exam scores first.\n");
+                option = 0;
+            }
+            else
+            {
+                for(int i = 0; i < 3; i++)
+                   {
+                       sum = sum + exam_scores[i];
+                   }
+                   float average = (float)sum/3;
+                   char grade = 'F';
+
+                       if(average >= 90)
+                           grade = 'A';
+                       else if (average >= 80)
+                           grade = 'B';
+                       else if (average >= 70)
+                               grade = 'C';
+                       else if (average >= 60)
+                               grade = 'D';
+                       else
+                               grade = 'F';
+                   printf("Hello %s, based on your exam scores of %.2f%%, %.2f%%, and %.2f%%, your average is %.2f%% with letter grade of '%c'\n", name, exam_scores[0], exam_scores[1], exam_scores[2], average, grade);
+                   printf("Select '5' in the menu to quit the program\n");
+                   option = 0;
+            }
+        }
+        if(option == 5)
+        {
+            printf("You have quit or the program has ended. Goodbye.\n");
+        }
+    } while(option != 5);
+
+
+
+    return -1;
+}
