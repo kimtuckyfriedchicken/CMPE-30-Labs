@@ -1,0 +1,16 @@
+#include <stdio.h>
+
+int main(void)
+{
+    char nanago = 75;
+    char potassium = 'K';
+    printf("The variables are %c and %c with integer value of %i and %i\n", potassium, potassium, nanago, nanago);
+
+    float maximillion = 50;
+    float yugi = 45;
+    float pharoah = yugi/maximillion * 100;
+
+    printf("Based on %.0f/%.0f, your percentage is %.2f%%\n", yugi, maximillion, pharoah);
+    
+    return -1;
+}
