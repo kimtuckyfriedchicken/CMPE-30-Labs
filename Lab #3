@@ -1,0 +1,17 @@
+#include <stdio.h>
+
+int main(void)
+{
+    float max;
+    float user;
+    printf("What is the max score of your exam: \n");
+        scanf("%f", &max);
+    printf("What was your score: \n");
+        scanf("%f", &user);
+    float percentage = user/max *100;
+    printf("You got %.0f/%.0f and your percentage is %.2f%%\n", user, max, percentage);
+    printf("Program finished, press any key to quit...");
+    //still got to do that part
+    
+    return -1;
+}
